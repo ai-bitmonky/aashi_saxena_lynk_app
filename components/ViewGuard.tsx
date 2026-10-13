@@ -13,6 +13,8 @@ function wanted(mq: MediaQueryList): Variant {
 /** Switch to the other variant: remember it in the cookie, then do a full reload
  *  (the variant scripts install globals and document listeners, so no soft swap). */
 function switchTo(v: Variant): boolean {
+  const w = window as Window & { __lynkSwitching?: number };
+  if (w.__lynkSwitching) return true; // a reload is already on its way
   try {
     const now = Date.now();
     let s = JSON.parse(sessionStorage.getItem(RELOADS) || '{"n":0,"t":0}') as { n: number; t: number };
@@ -23,6 +25,7 @@ function switchTo(v: Variant): boolean {
   } catch {
     /* storage blocked: still switch once */
   }
+  w.__lynkSwitching = 1;
   document.cookie = `${VIEW_COOKIE}=${v}; path=/; max-age=31536000; samesite=lax`;
   location.reload();
   return true;

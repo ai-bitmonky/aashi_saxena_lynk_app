@@ -21,7 +21,7 @@ const guardCss = `#lynk-root[data-guard]:not([data-ready]){visibility:hidden;ani
 function prePaintScript(variant: Variant) {
   return `(function(){try{var r=document.getElementById('lynk-root'),want=matchMedia('(min-width: ${DESKTOP_MIN_WIDTH}px)').matches?'desktop':'mobile';
 if(want!=='${variant}'){var k='lynk_reloads',now=Date.now(),s=JSON.parse(sessionStorage.getItem(k)||'{"n":0,"t":0}');if(now-s.t>10000)s={n:0,t:now};
-if(s.n<2){s.n++;sessionStorage.setItem(k,JSON.stringify(s));document.cookie='${VIEW_COOKIE}='+want+'; path=/; max-age=31536000; samesite=lax';location.reload();return;}}
+if(s.n<2){s.n++;sessionStorage.setItem(k,JSON.stringify(s));document.cookie='${VIEW_COOKIE}='+want+'; path=/; max-age=31536000; samesite=lax';window.__lynkSwitching=1;location.reload();return;}}
 else sessionStorage.removeItem('lynk_reloads');r.setAttribute('data-ready','');}catch(e){document.getElementById('lynk-root').setAttribute('data-ready','');}})();`;
 }
 
