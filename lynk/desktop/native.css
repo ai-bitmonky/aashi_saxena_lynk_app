@@ -1,0 +1,4 @@
+
+/* ============ LYNK app shell (Next.js) ============ */
+html,body{overscroll-behavior:none}
+.rail,[role=tab],.toast{-webkit-user-select:none;user-select:none}

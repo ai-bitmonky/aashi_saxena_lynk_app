@@ -1,0 +1,17 @@
+
+/* ============ LYNK app shell (Next.js) ============
+   The prototype's frameless phone look (its <=520px rules) at every width:
+   no device frame, no fake status bar, full-bleed at 100dvh with safe areas.
+   521px+ (tablets, narrow windows): same app, centred, max 600px wide. */
+:root{--sb:max(env(safe-area-inset-top,0px),12px);--hb:env(safe-area-inset-bottom,0px)}
+html,body{overscroll-behavior:none;background:var(--bg)}
+body{touch-action:manipulation;-webkit-text-size-adjust:100%}
+.stage{display:block;padding:0;height:100dvh}
+.about{display:none}
+.devwrap,.device{position:static;width:100%;height:100dvh;transform:none}
+.device{padding:0;border-radius:0;box-shadow:none;background:none}
+.device::before,.device::after,.island,.status,.hi{display:none}
+.app{width:100%;height:100%;border-radius:0}
+@media (min-width:521px){.devwrap{max-width:600px;margin:0 auto}}
+/* native feel: chrome is not selectable, text content stays selectable */
+.tabbar,.nb,.seg,.segwrap,.modes,.dock,.sugs,.banner,.toast,.sheet .grab,[role=tab],label{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
