@@ -148,6 +148,9 @@ h1,h2,h3,h4,p{margin:0}
 .hero{font:700 40px/44px var(--fd);letter-spacing:-.04em;margin:8px 0 24px}
 .hl{color:var(--on-sun);background:linear-gradient(var(--sun),var(--sun)) 0 88%/100% 38% no-repeat;padding:0 3px;margin:0 -3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hl.draw{animation:hl .7s .25s var(--e-fill) both}
+/* dark: dark text needs the full-height highlight behind it (half-height left the top of the word dark-on-dark) */
+:root[data-theme=dark] .hl{background-position:0 50%;background-size:100% 100%}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .hl{background-position:0 50%;background-size:100% 100%}}
 @keyframes hl{from{background-size:0 38%}}
 .fields{position:relative;background:var(--surface);border-radius:20px;box-shadow:var(--sh)}
 .fld{display:flex;align-items:center;gap:16px;height:64px;padding:0 68px 0 20px;position:relative;cursor:text}

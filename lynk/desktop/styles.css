@@ -82,6 +82,9 @@ kbd{font:600 11px/16px var(--fd);min-width:20px;padding:1px 5px;border-radius:5p
 .wordmark span{font-size:13px;line-height:18px;color:var(--ink-3)}
 .hero{font:700 34px/40px var(--fd);letter-spacing:-.03em;margin:0 0 20px}
 .hero em{font-style:normal;color:#0E0E0F;background:linear-gradient(transparent 64%,var(--sun) 64%,var(--sun) 92%,transparent 92%);padding:0 2px;margin:0 -2px}
+/* dark: dark text needs the full-height highlight behind it */
+:root[data-theme="dark"] .hero em{background:var(--sun)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero em{background:var(--sun)}}
 .fields{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh-1)}
 .fld{display:flex;align-items:center;gap:12px;padding:0 60px 0 16px;height:56px}
 .fld+.fld{position:relative}
